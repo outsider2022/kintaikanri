@@ -1,0 +1,15 @@
+@charset "utf-8";
+body {
+	background-color:rgb(255,250,205);
+}
+
+div {margin:5px; 
+	 padding:10px;
+	
+}
+
+.menu {
+	font-size:150%;
+
+}
+
