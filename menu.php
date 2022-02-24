@@ -16,6 +16,7 @@
             <a href="department.php">部門管理</a>
             <a href="employee.php">社員管理</a>
             <a href="user.php">ユーザー管理</a>
+            <a href="administratorconfirm.php">管理者確認ページ</a>
 </div>
 
 </body>
