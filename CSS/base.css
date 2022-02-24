@@ -1,6 +1,7 @@
 @charset "utf-8";
 body {
-	background-color:rgb(255,250,205);
+	background-color:white;
+	font-size: 40px;
 }
 
 div {margin:5px; 
@@ -13,3 +14,8 @@ div {margin:5px;
 
 }
 
+.header {
+	color: #fccf00;
+font-size: 24px;
+
+}
