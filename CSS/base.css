@@ -9,9 +9,22 @@ div {margin:5px;
 	
 }
 
+.menu_box {
+  overflow: hidden;
+}
 .menu {
-	font-size:150%;
+ float: left;
+  padding:  20px;             /* 余白指定 */
+  height: 100px;              /* 高さ指定 */
+}
 
+.contents {
+  overflow: hidden;
+}
+.item {
+  float: left;
+  padding: 20px 30px;
+  text-align: center;
 }
  
 /* ここからヘッダー */
