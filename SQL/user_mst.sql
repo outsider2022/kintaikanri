@@ -1,13 +1,9 @@
-# kintaikanri
-<<<<<<< HEAD
-ログイン画面
-=======
 -- phpMyAdmin SQL Dump
 -- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Feb 15, 2022 at 07:10 AM
+-- Generation Time: Feb 24, 2022 at 02:27 AM
 -- Server version: 5.7.24
 -- PHP Version: 7.4.16
 
@@ -28,19 +24,16 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `transaction`
+-- Table structure for table `user`
 --
 
-CREATE TABLE `transaction` (
-  `recordID` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
-  `workday` date NOT NULL,
-  `start_time` datetime NOT NULL,
-  `end_time` datetime NOT NULL,
-  `employee_NO` int(11) NOT NULL,
-  `office_ID` varchar(8) COLLATE utf8_unicode_ci NOT NULL,
-  `bikou` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `created_date` datetime NOT NULL,
-  `created_name` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+CREATE TABLE `user` (
+  `id` int(11) NOT NULL,
+  `ROLE` tinyint(4) NOT NULL,
+  `password` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `is_deleted` int(11) NOT NULL,
+  `create_date` datetime NOT NULL,
+  `create_name` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
   `updated_date` datetime NOT NULL,
   `updated_name` varchar(20) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -49,4 +42,3 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
->>>>>>> 1e245cd3da5115df3aecaf7988ea37e7f82089fd
