@@ -108,7 +108,7 @@ if($status==false) {
     $where .= ')';
 
     // デバッグ
-    echo $where;
+    //echo $where;
 
     // 接触者検索のSQL作成
     $stmt = $pdo->prepare("SELECT transaction.recordID,transaction.workdate,transaction.starttime,transaction.endtime,transaction.empno,employee_mst.empname,department_mst.departmentname,workplace_mst.workplacename,transaction.remarks
