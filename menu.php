@@ -2,24 +2,31 @@
 //セッションをスタート
 session_start();
 
-$lid = $_POST['lid'];
-$lpw = $_POST['lpw'];
+// $lid = $_POST['lid'];
+// $lpw = $_POST['lpw'];
+
+// 社員番号を直打ち
+//$lid = "00056125";
 
 // //関数を呼び出して
 require_once('funcs.php');
 
 // //ログインチェック
-loginCheck();
+// loginCheck();
 
 // //以下ログインユーザーのみ
 $pdo = db_conn();
 
-// //３．データ表示
+// SQL作成
+$stmt = $pdo->prepare("SELECT * FROM user ");
+
+//３．データ表示
+
 $view="";
 if($==false) {
   sql_error($stmt);
 }else{
-  while( $r = $stmt->fetch(PDO::FETCH_ASSOC)){ 
+  while( $r = $stmt->fetch(PDO::FETCH_ASSOC)){
     $view .= '<div class="menu">';
     $view .= '<a href="workplace.php?empno=$lid">出勤先管理</a>';
     $view .= '<a href="department.php?empno=$lid">部門管理</a>';
@@ -61,9 +68,11 @@ if($==false) {
 <!-- ここからテキストリンク -->
 <div class="menu_box">
      <div class="menu">
-         <a href="workreg.php?empno=">出社登録</a>
+         <a href="workregchk.php?empno=00056125">出社登録</a>
          <br><br>
          <a href="workdetails.php?empno=">登録内容確認</a>
+         <br><br>
+         <a href="administratorconfirm.php">管理者確認ページ</a>
      </div>
 </div>
 
@@ -71,4 +80,3 @@ if($==false) {
 
 
 </html>
-
