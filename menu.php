@@ -21,6 +21,7 @@ $pdo = db_conn();
 $stmt = $pdo->prepare("SELECT * FROM user ");
 
 //３．データ表示
+
 $view="";
 if($==false) {
   sql_error($stmt);
@@ -35,6 +36,7 @@ if($==false) {
   }
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="ja">
