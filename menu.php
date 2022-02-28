@@ -25,7 +25,7 @@ if($==false) {
     $view .= '<a href="department.php">部門管理</a>'
     $view .= '<a href="employee.php">社員マスタ管理</a>';
     $view .= '<a href="user.php">ユーザー管理</a>';
-    $view .= '<a href="????.php">管理者確認ページ(一覧表示・データ修正)</a>';
+    $view .= '<a href="administratorconfirm.php">管理者確認ページ(一覧表示・データ修正)</a>';
   }
 }
 ?>
@@ -38,7 +38,7 @@ if($==false) {
          <br><br>
          <a href="user.php">ユーザー管理</a>
          <br><br>
-         <a href="????.php">管理者確認ページ(一覧表示・データ修正)</a> -->
+         <a href="administratorconfirm.php">管理者確認ページ(一覧表示・データ修正)</a> -->
      </div>
 
 
@@ -74,6 +74,7 @@ if($==false) {
          <a href="workdetails.php?empno=">登録内容確認</a>
      </div>
 </div>
+
 
 
 
