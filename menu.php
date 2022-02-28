@@ -21,19 +21,11 @@ if($==false) {
 }else{
   while( $r = $stmt->fetch(PDO::FETCH_ASSOC)){ 
     $view .= '<div class="menu">';
-<<<<<<< HEAD
     $view .= '<a href="workplace.php?empno=$lid">出勤先管理</a>';
     $view .= '<a href="department.php?empno=$lid">部門管理</a>'
     $view .= '<a href="employee.php?empno=$lid">社員マスタ管理</a>';
     $view .= '<a href="user.php?empno=$lid">ユーザー管理</a>';
-    $view .= '<a href="????.php?empno=$lid">管理者確認ページ(一覧表示・データ修正)</a>';
-=======
-    $view .= '<a href="workplace.php">出勤先管理</a>';
-    $view .= '<a href="department.php">部門管理</a>'
-    $view .= '<a href="employee.php">社員マスタ管理</a>';
-    $view .= '<a href="user.php">ユーザー管理</a>';
-    $view .= '<a href="administratorconfirm.php">管理者確認ページ(一覧表示・データ修正)</a>';
->>>>>>> 7c55f83417e335daba72f1b4d570e838cee10f40
+    $view .= '<a href="administratorconfirm.php?empno=$lid">管理者確認ページ(一覧表示・データ修正)</a>';
   }
 }
 ?>
@@ -46,13 +38,8 @@ if($==false) {
          <br><br>
          <a href="user.php">ユーザー管理</a>
          <br><br>
-<<<<<<< HEAD
-         <a href="????.php">管理者確認ページ(一覧表示・データ修正)</a> -->
-     <!-- </div> -->
-=======
          <a href="administratorconfirm.php">管理者確認ページ(一覧表示・データ修正)</a> -->
      </div>
->>>>>>> 7c55f83417e335daba72f1b4d570e838cee10f40
 
 
 <!DOCTYPE html>
