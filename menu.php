@@ -2,30 +2,30 @@
 //セッションをスタート
 session_start();
 
-$user_id = $_SESSION['user_id'];
+$lid = $_POST['lid'];
+$lpw = $_POST['lpw'];
 
-//関数を呼び出して
+// //関数を呼び出して
 require_once('funcs.php');
 
-//ログインチェック
+// //ログインチェック
 loginCheck();
 
-//以下ログインユーザーのみ
-
+// //以下ログインユーザーのみ
 $pdo = db_conn();
 
-//３．データ表示
+// //３．データ表示
 $view="";
 if($==false) {
   sql_error($stmt);
 }else{
   while( $r = $stmt->fetch(PDO::FETCH_ASSOC)){ 
     $view .= '<div class="menu">';
-    $view .= '<a href="workplace.php">出勤先管理</a>';
-    $view .= '<a href="department.php">部門管理</a>'
-    $view .= '<a href="employee.php">社員マスタ管理</a>';
-    $view .= '<a href="user.php">ユーザー管理</a>';
-    $view .= '<a href="????.php">管理者確認ページ(一覧表示・データ修正)</a>';
+    $view .= '<a href="workplace.php?empno=$lid">出勤先管理</a>';
+    $view .= '<a href="department.php?empno=$lid">部門管理</a>'
+    $view .= '<a href="employee.php?empno=$lid">社員マスタ管理</a>';
+    $view .= '<a href="user.php?empno=$lid">ユーザー管理</a>';
+    $view .= '<a href="????.php?empno=$lid">管理者確認ページ(一覧表示・データ修正)</a>';
   }
 }
 ?>
@@ -39,7 +39,7 @@ if($==false) {
          <a href="user.php">ユーザー管理</a>
          <br><br>
          <a href="????.php">管理者確認ページ(一覧表示・データ修正)</a> -->
-     </div>
+     <!-- </div> -->
 
 
 <!DOCTYPE html>
@@ -53,6 +53,9 @@ if($==false) {
 <!-- ここからヘッダー -->
 <body>
 <header>
+  <p>
+  <var></var>
+  </p>
     <h1 class="header-title">メインメニュー</h1>
     <nav class="nav">
       <ul class="menu-group">
