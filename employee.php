@@ -14,7 +14,7 @@ $pdo = db_conn();
 //２．データ取得SQL作成
 //　社員情報を取得
 $stmt = $pdo->prepare("SELECT a.*,b.departmentname,c.workplacename FROM employee_mst a 
-inner join department_mst b on a.departmentno=b.departmentno inner join workplace_mst c on a.workplaceno=c.workplaceno where a.activeindicator='Y' order by a.empno;");
+inner join department_mst b on a.departmentno=b.departmentno left outer join workplace_mst c on a.workplaceno=c.workplaceno where a.activeindicator='Y' order by a.empno;");
 $status = $stmt->execute();
 
 //　部門の一覧を取得　ココカラ
