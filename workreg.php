@@ -1,12 +1,12 @@
 <?php
 //セッションをスタート
-//session_start();
+session_start();
 
 //関数を呼び出して
 require_once('funcs.php');
 
 //ログインチェック
-//loginCheck();
+loginCheck();
 
 //1. データ取得
 $empno = $_GET["empno"];
@@ -118,7 +118,7 @@ while( $r = $stmt->fetch(PDO::FETCH_ASSOC)){
 <!-- Head[Start] -->
 <header>
     <div><a href="menu.php">メニューへ</a></div>
-    <div><a href="workdetails.php">詳細一覧</a></div>
+    <div><a href="worklist.php?empno=<?=$empno?>">詳細一覧</a></div>
 </header>
 <!-- Head[End] -->
 

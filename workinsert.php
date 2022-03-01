@@ -1,12 +1,23 @@
 <?php
+
+//セッションをスタート
+session_start();
+
 //1. POSTデータ取得
 $workdate   = $_POST["workdate"];
 $starttime   = $_POST["starttime"];
 $empno   = $_POST["empno"];
 $workplacename   = $_POST["workplacename"];
+$id=$_SESSION['id'];
+
+var_dump($id);
 
 //2. DB接続します
 require_once('funcs.php');
+
+//ログインチェック
+loginCheck();
+
 $pdo = db_conn();
 
 //必須項目の入力チェック
@@ -16,9 +27,8 @@ if(empty($workdate)==true || empty($starttime)==true || $workplacename=="選択�
   echo '<a href="' . $_SERVER['HTTP_REFERER'] . '">前に戻る</a>';
 }else{
     //データ登録SQL作成
-    //★★★要修正！★★★　作成者、更新者をセッションから持ってくる
     $stmt2 = $pdo->prepare("INSERT INTO transaction(recordID,workdate,starttime,endtime,empno,workplaceno,createdatetime,created_name,updatedatetime,updated_name)
-      VALUES(NULL,:workdate,:starttime,NULL,:empno,:workplacename,sysdate(),'00000000',sysdate(),'00000000');");
+      VALUES(NULL,:workdate,:starttime,NULL,:empno,:workplacename,sysdate(),$id,sysdate(),$id);");
 
     $stmt2->bindValue(':workdate', $workdate, PDO::PARAM_STR);  
     $stmt2->bindValue(':starttime', $starttime, PDO::PARAM_STR); 

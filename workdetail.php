@@ -1,8 +1,14 @@
 <?php
 
-require_once('funcs.php');
-$pdo = db_conn();
+//セッションをスタート
+session_start();
 
+require_once('funcs.php');
+
+//ログインチェック
+loginCheck();
+
+$pdo = db_conn();
 
 $recordID = $_GET['recordID'];
 
