@@ -19,8 +19,6 @@ if ($role == 1) {
   $view .= '<br><br>';
   $view .= '<a href="worklist.php?empno='.$lid.'">登録内容確認</a>';
   $view .= '<br><br>';
-  $view .= '<a href="administratorconfirm.php">管理者確認ページ</a>';;
-  $view .= '<br><br>';
   $view .= '<a href="workplace.php">出勤先管理</a>';
   $view .= '<br><br>';
   $view .= '<a href="department.php">部門管理</a>';
