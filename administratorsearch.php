@@ -2,7 +2,7 @@
 // 管理者検索結果画面
 
 //SESSIONスタート
-// session_start();
+session_start();
 
 //関数を呼び出す
 require_once('funcs.php');
@@ -32,6 +32,11 @@ $data = array();
 //1.DB接続
 $pdo = db_conn();
 //２．データ検索SQL作成
+
+// ORDER BY句を作成
+$order = " ORDER BY workplace_mst.workplacename ASC";
+
+// 検索部分を作成
 $stmt = $pdo->prepare("SELECT transaction.recordID,transaction.workdate,transaction.starttime,transaction.endtime,transaction.empno,employee_mst.empname,department_mst.departmentname,workplace_mst.workplacename,transaction.remarks
 FROM
 transaction
@@ -47,7 +52,7 @@ JOIN
 workplace_mst
 ON
 transaction.workplaceno = workplace_mst.workplaceno
-WHERE transaction.workdate = :date and transaction.empno = :empno");
+WHERE transaction.workdate = :date and transaction.empno = :empno".$order);
 
 //３．バインド変数設定
 $stmt->bindValue(":date", date("Y-m-d", strtotime($date)), PDO::PARAM_STR);
@@ -110,7 +115,7 @@ if($status==false) {
     $where .= ')';
 
     // デバッグ
-    echo $where;
+    // echo $where;
 
     // 接触者検索のSQL作成
     $stmt = $pdo->prepare("SELECT transaction.recordID,transaction.workdate,transaction.starttime,transaction.endtime,transaction.empno,employee_mst.empname,department_mst.departmentname,workplace_mst.workplacename,transaction.remarks
@@ -127,7 +132,7 @@ if($status==false) {
     JOIN
     workplace_mst
     ON
-    transaction.workplaceno = workplace_mst.workplaceno ".$where);
+    transaction.workplaceno = workplace_mst.workplaceno ".$where.$order);
     $status = $stmt->execute();
 
     if($status==false) {

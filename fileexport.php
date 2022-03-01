@@ -1,7 +1,7 @@
 <?php
 
 //SESSIONスタート
-//session_start();
+session_start();
 
 //関数を呼び出す
 require_once('funcs.php');
