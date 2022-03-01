@@ -1,41 +1,45 @@
 <?php
 //セッションをスタート
-session_start();
+// session_start();
 
-// $lid = $_POST['lid'];
-// $lpw = $_POST['lpw'];
+//ログインユーザーidとroleを取得
+$lid = $_SESSION['id'];
+$role = $_SESSION['ROLE']
 
-// 社員番号を直打ち
-//$lid = "00056125";
+// テスト：idとroleを直打ち
+// $lid = "00056125";
+// $role = 1;
+// roleはmenuで取得済みなので、SQLはなし
 
-// //関数を呼び出して
-require_once('funcs.php');
-
-// //ログインチェック
-// loginCheck();
-
-// //以下ログインユーザーのみ
-$pdo = db_conn();
-
-// SQL作成
-$stmt = $pdo->prepare("SELECT * FROM user ");
-
-//３．データ表示
-
+// データ表示
 $view="";
-if($==false) {
-  sql_error($stmt);
-}else{
-  while( $r = $stmt->fetch(PDO::FETCH_ASSOC)){
-    $view .= '<div class="menu">';
-    $view .= '<a href="workplace.php?empno=$lid">出勤先管理</a>';
-    $view .= '<a href="department.php?empno=$lid">部門管理</a>';
-    $view .= '<a href="employee.php?empno=$lid">社員マスタ管理</a>';
-    $view .= '<a href="user.php?empno=$lid">ユーザー管理</a>';
-    $view .= '<a href="administratorconfirm.php?empno=$lid">管理者確認ページ(一覧表示・データ修正)</a>';
-  }
+// roleが1：管理者画面も追加
+if ($role == 1) {
+  $view .= '<a href="workregchk.php?empno=$lid">出社登録</a>';
+  $view .= '<br><br>';
+  $view .= '<a href="workdetails.php?empno=$lid">登録内容確認</a>';
+  $view .= '<br><br>';
+  $view .= '<a href="administratorconfirm.php?empno=$lid">管理者確認ページ</a>';;
+  $view .= '<br><br>';
+  $view .= '<a href="workplace.php?empno=$lid">出勤先管理</a>';
+  $view .= '<br><br>';
+  $view .= '<a href="department.php?empno=$lid">部門管理</a>';
+  $view .= '<br><br>';
+  $view .= '<a href="employee.php?empno=$lid">社員マスタ管理</a>';
+  $view .= '<br><br>';
+  $view .= '<a href="user.php?empno=$lid">ユーザー管理</a>';
+  $view .= '<br><br>';
+  $view .= '<a href="administratorconfirm.php?empno=$lid">管理者確認ページ</a>';
+  $view .= '<br><br>';
+} else {
+  // roleが1以外：出社登録、登録内容確認
+  $view .= '<a href="workregchk.php?empno=00056125">出社登録</a>';
+  $view .= '<br><br>';
+  $view .= '<a href="workdetails.php?empno=">登録内容確認</a>';
+  $view .= '<br><br>'; 
 }
-?>
+
+ ?>
 
 
 <!DOCTYPE html>
@@ -66,15 +70,16 @@ if($==false) {
 </body>
 
 <!-- ここからテキストリンク -->
-<div class="menu_box">
-     <div class="menu">
-         <a href="workregchk.php?empno=00056125">出社登録</a>
+<!-- <div class="menu_box">
+     <div class="menu"> -->
+         <!-- <a href="workregchk.php?empno=00056125">出社登録</a>
          <br><br>
          <a href="workdetails.php?empno=">登録内容確認</a>
          <br><br>
-         <a href="administratorconfirm.php">管理者確認ページ</a>
-     </div>
-</div>
+         <a href="administratorconfirm.php">管理者確認ページ</a> -->
+         <?=$view; ?>
+     <!-- </div>
+</div> -->
 
 
 
