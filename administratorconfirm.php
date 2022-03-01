@@ -2,7 +2,7 @@
 // 管理者確認画面
 
 //SESSIONスタート
-//session_start();
+session_start();
 
 //関数を呼び出す
 require_once('funcs.php');
