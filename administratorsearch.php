@@ -97,10 +97,10 @@ if($status==false) {
     $j = 0;
     for($i = 0 ; $i < count($starttime); $i++){
      $where .= '(transaction.workdate = "'.$workdate[$i]. '" and ';
-    //  $where .= '(transaction.starttime <= "'.$endtime[$i].'" or ';
-    //  $where .= 'transaction.endtime <= "'.$starttime[$i].'" ) ';
-     $where .= '("'.$starttime[$i].'" <= transaction.starttime <= "'.$endtime[$i].'" or ';
-     $where .= '"'.$starttime[$i].'" <= transaction.endtime <= "'.$endtime[$i].'" )';
+      $where .= '(transaction.starttime <= "'.$endtime[$i].'" and ';
+      $where .= 'transaction.endtime >= "'.$starttime[$i].'" ) ';
+    // $where .= '("'.$starttime[$i].'" <= transaction.starttime <= "'.$endtime[$i].'" or ';
+    // $where .= '"'.$starttime[$i].'" <= transaction.endtime <= "'.$endtime[$i].'" )';
      $where .= ' and workplace_mst.workplacename = "'.$place[$i].'" ) ';
      if ($j < count($starttime)-1) {
         $where .= ' or ';
