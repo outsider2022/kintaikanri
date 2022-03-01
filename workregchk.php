@@ -1,12 +1,12 @@
 <?php
 //セッションをスタート
-//session_start();
+session_start();
 
 //関数を呼び出して
 require_once('funcs.php');
 
 //ログインチェック
-//loginCheck();
+loginCheck();
 
 
 //1. データ取得

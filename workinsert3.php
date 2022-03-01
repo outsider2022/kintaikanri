@@ -1,5 +1,8 @@
 <?php
 
+//セッションをスタート
+session_start();
+
 //退勤処理、データ修正
 
 //1. POSTデータ取得
@@ -7,6 +10,8 @@ $recordID   = $_POST["recordID"];
 $starttime   = $_POST["starttime"];
 $endtime   = $_POST["endtime"];
 $remarks   = $_POST["remarks"];
+
+$id=$_SESSION['id'];
 
 //入力エラーの有無確認FLG
 $HbFlg="";
@@ -32,11 +37,15 @@ if ($HbFlg<>"1"){
 
   //DB接続します
 require_once('funcs.php');
+
+//ログインチェック
+loginCheck();
+
+
 $pdo = db_conn();
 
 //データ更新SQL作成
-//★★★要修正！★★★　作成者、更新者をセッションから持ってくる
-$stmt2 = $pdo->prepare("UPDATE transaction SET endtime=:endtime,remarks=:remarks,updated_name='00000000',updatedatetime=sysdate() where recordID=:recordID;");
+$stmt2 = $pdo->prepare("UPDATE transaction SET endtime=:endtime,remarks=:remarks,updated_name=$id,updatedatetime=sysdate() where recordID=:recordID;");
 $stmt2->bindValue(':recordID', $recordID, PDO::PARAM_INT);
 $stmt2->bindValue(':endtime', $endtime, PDO::PARAM_STR);
 $stmt2->bindValue(':remarks', $remarks, PDO::PARAM_STR);
