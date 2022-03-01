@@ -97,9 +97,11 @@ if($status==false) {
     $j = 0;
     for($i = 0 ; $i < count($starttime); $i++){
      $where .= '(transaction.workdate = "'.$workdate[$i]. '" and ';
-     $where .= '(transaction.starttime <= "'.$endtime[$i].'" or ';
-     $where .= 'transaction.endtime <= "'.$starttime[$i].'" ) ';
-     $where .= 'and workplace_mst.workplacename = "'.$place[$i].'" ) ';
+    //  $where .= '(transaction.starttime <= "'.$endtime[$i].'" or ';
+    //  $where .= 'transaction.endtime <= "'.$starttime[$i].'" ) ';
+     $where .= '("'.$starttime[$i].'" <= transaction.starttime <= "'.$endtime[$i].'" or ';
+     $where .= '"'.$starttime[$i].'" <= transaction.endtime <= "'.$endtime[$i].'" )';
+     $where .= ' and workplace_mst.workplacename = "'.$place[$i].'" ) ';
      if ($j < count($starttime)-1) {
         $where .= ' or ';
      }
@@ -108,7 +110,7 @@ if($status==false) {
     $where .= ')';
 
     // デバッグ
-    //echo $where;
+    echo $where;
 
     // 接触者検索のSQL作成
     $stmt = $pdo->prepare("SELECT transaction.recordID,transaction.workdate,transaction.starttime,transaction.endtime,transaction.empno,employee_mst.empname,department_mst.departmentname,workplace_mst.workplacename,transaction.remarks
